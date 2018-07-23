@@ -4,8 +4,8 @@
 #include <mysql.h>
 #include <string.h>
 
-#define SIZE 5
-#define SIZE_Q 50
+#define TAM 5
+#define TAM_Q 50
 
 MYSQL conexao;
 int statusConexao;
@@ -13,15 +13,15 @@ int statusConexao;
 
 void salvarScore(int score){
 
-    char nome[SIZE];
-    char query[SIZE_Q];
+    char nome[TAM];
+    char query[TAM_Q];
 
     setbuf(stdin,NULL);
     mysql_init(&conexao);
 
     system("cls");
     printf("Armazenamento de score\n\n");
-    printf("Digite um apelido (trÍs digitos):");
+    printf("Digite um apelido (tr√™s digitos):");
     fgets(nome,SIZE,stdin);
     nome[strcspn(nome,"\n")] = 0;
 
@@ -33,14 +33,14 @@ void salvarScore(int score){
                 printf("\nScore salvo com sucesso!\n");
             }
             else{
-                printf("\nFalha na conex„o, tente novamente\n");
+                printf("\nFalha na conex√£o, tente novamente\n");
             }
             system("PAUSE");
             mysql_close(&conexao);
 
         }
         else{
-            printf("Falha na conex„o,tente novamente\n");
+            printf("Falha na conex√£o,tente novamente\n");
             system("PAUSE");
         }
 
@@ -62,7 +62,7 @@ void obterScore(void){
         if(mysql_real_connect(&conexao, "localhost", "root", "", "score", 3306, NULL, 0)){
 
             if(mysql_query(&conexao,query)){
-                printf("Falha na conex„o,tente novamente\n");
+                printf("Falha na conex√£o,tente novamente\n");
                 system("PAUSE");
             }else{
 
@@ -103,7 +103,7 @@ void obterScore(void){
 
         }
         else{
-            printf("\nFalha na conex„o\n");
+            printf("\nFalha na conex√£o\n");
             system("PAUSE");
         }
 
